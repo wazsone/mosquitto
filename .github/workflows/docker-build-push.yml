@@ -19,8 +19,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Preparing
+
+    - name: Install xsltproc
+      run: |
+        sudo apt update
+        sudo apt install xsltproc docbook-xsl
+
+    - name: Prepare files for the docker build
       run: make preparedockerbuild
 
     - name: Build docker image
